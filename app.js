@@ -1,6 +1,14 @@
+
+
+/*
+Code lab: Basic Routing
+Date created 2024-11-18
+Created by Harnoor Kaur Sandhu
+*/
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const router = require("./routes/pages")
 
 app.use(express.json());
 
@@ -10,20 +18,7 @@ app.use((req,res,next)=>{
 })
 
 
-app.get("/user/:id",(req, res)  =>{
-    const userId = req.params.id; //dot notation
-   res.send(`User id is ${userId}`);
-})
-
-app.get("/search",(req, res)  =>{
-    const query = req.query.q; 
-   res.send(`Search query is ${query}`);
-})
-
-app.get('/', (req, res)=>{
-    res.send("Hello World!");
-});
-
+app.use(router);
 
 
 
